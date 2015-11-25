@@ -20,7 +20,7 @@ csv_to_sqlite_path_ <- function(path, db_name = "db", single_table = FALSE, tabl
 			RSQLite::dbWriteTable(
 				con,
 				value = tmp,
-				name = strsplit(file,"\\.")[[1]][1])
+				name = strsplit(file, "\\.")[[1]][1])
 
 		} else if (single_table == TRUE){
 			RSQLite::dbWriteTable(

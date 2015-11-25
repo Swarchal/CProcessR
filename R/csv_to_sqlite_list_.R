@@ -19,13 +19,13 @@ csv_to_sqlite_list_ <- function(files, db_name = "db", single_table = FALSE, tab
 		if (single_table == FALSE){
 			RSQLite::dbWriteTable(
 				con,
-				value = tmp
+				value = tmp,
 				name = strsplit(filen,"\\.")[[1]][1])
 
 		} else if (single_table == TRUE){
 			RSQLite::dbWriteTable(
 				con,
-				value = tmp
+				value = tmp,
 				name = table_name,
 				append = TRUE)
 
