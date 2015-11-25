@@ -1,12 +1,29 @@
-csv_to_sql <- function(x, db_name = "db", single_table = FALSE, table_name = "exp"){
+#' Converts directory of .csv files to an SQLite database
+#'
+#' Produces an SQLite database from either a directory or a list of .csv files
+#'
+#' @param x list of files or directory containing files
+#' @param dir Directory to save database in, otherwise will save in the
+#' 		current working directory.
+#' @param db_name Name given to the database.
+#' @param single_table Whether to place all .csv files in a single table,
+#' 		otherwise will produce a table per file.
+#' @param table_name Only useful if `single_table = TRUE`, what to call the table.
+#'
+#' @export
+
+
+csv_to_sql <- function(x, dir = NULL, db_name = "db", single_table = FALSE, table_name = "exp"){
 
 	if (is.list(x)) csv_to_sqlite_list_(x,
+		dir,
 		db_name,
 		single_table,
 		table_name)
 
 	if (is.character(x)) csv_to_sqlite_path_(x,
-		db_name
+		dir,
+		db_name,
 		single_table,
 		table_name)
 }

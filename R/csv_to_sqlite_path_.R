@@ -1,3 +1,19 @@
+#' Converts directory of .csv files to an SQLite database
+#'
+#' Called by `csv_to_sql()`, can also be used directly. Will if given a
+#' filepath, will generate an sqlite database containing either all the 
+#' files in a single table, or a table for each file.
+#'
+#' @param path Filepath to directory containing .csv files
+#' @param dir Directory to save database in, otherwise will save in the
+#' 		filepath given in the `path` argument.
+#' @param db_name Name given to the database.
+#' @param single_table Whether to place all .csv files in a single table,
+#' 		otherwise will produce a table per file.
+#' @param table_name Only useful if `single_table = TRUE`, what to call the table.
+#'
+#' @export
+
 csv_to_sqlite_path_ <- function(path, dir = NULL, db_name = "db", single_table = FALSE, table_name = "exp"){
 
 	# if not given a path for `dir` will set
@@ -13,7 +29,7 @@ csv_to_sqlite_path_ <- function(path, dir = NULL, db_name = "db", single_table =
 	}
 
 	# create connection to an SQLite database with the name `db_name`
-	con <- RSQLite::dbConnect(SQLite(), paste0(db_name, ".sqlite3")
+	con <- RSQLite::dbConnect(SQLite(), paste0(db_name, ".sqlite3"))
 
 	# warn that table_name has no effect when creating multiple tables
 	if (!single_table & table_name != "exp"){
