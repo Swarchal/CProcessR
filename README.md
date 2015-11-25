@@ -15,15 +15,18 @@ Package for the semi-automated processing of CellProfiler data in R. Aim to to g
 
 - (pipedream) Can produce a markdown file detailing the processing steps used and any summary statistics (such as which outlier images were removed) and save in the working directory.
 
+- Ideally should be working with databases (SQLite) rather than .csv files.
+
 ## Principal functions
 
 ### CSV family:
 
-- Merge together multiple .csv files and object prefixes to columns
+- Load multiple .csv files produced by CP into an SQLite database
+- Sort out column names so consistent with the to_database output of CP
 
 ### SQL family:
 
-- Make connection to database and produce dataframes from tables
+- Process tables and column names to a sensible default
 
 ### Universal:
 CSV or SQL should produce dataframes in the same format that can then be passed to universal functions
