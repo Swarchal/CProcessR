@@ -14,7 +14,7 @@ csv_to_sqlite_list_ <- function(files, db_name = "db", single_table = FALSE, tab
 	}
 
 	for (file in files){
-		tmp <- read.table(file)
+		tmp <- read.csv(file)
 
 		if (single_table == FALSE){
 			RSQLite::dbWriteTable(
