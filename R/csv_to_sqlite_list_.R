@@ -1,4 +1,4 @@
-csv_to_sqlite_list_ <- function(files, db_name = "db", single_table = FALSE, table_name = "exp")
+csv_to_sqlite_list_ <- function(files, db_name = "db", single_table = FALSE, table_name = "exp"){
 
 	if (!is.list(files)){
 		stop("Argument 'files' has to be a list.", call. = FALSE)
@@ -13,14 +13,14 @@ csv_to_sqlite_list_ <- function(files, db_name = "db", single_table = FALSE, tab
 			call. = FALSE)
 	}
 
-	for (file in filelist){
+	for (file in files){
 		tmp <- read.table(file)
 
 		if (single_table == FALSE){
 			RSQLite::dbWriteTable(
 				con,
 				value = tmp
-				name = strsplit(filename,"\\.")[[1]][1])
+				name = strsplit(filen,"\\.")[[1]][1])
 
 		} else if (single_table == TRUE){
 			RSQLite::dbWriteTable(
