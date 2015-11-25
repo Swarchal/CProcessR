@@ -1,5 +1,13 @@
-csv_to_sqlite_path_ <- function(path, db_name = "db", single_table = FALSE, table_name = "exp"){
+csv_to_sqlite_path_ <- function(path, dir = NULL, db_name = "db", single_table = FALSE, table_name = "exp"){
 
+	# if not given a path for `dir` will set
+	# the working directory to the path given
+	if (is.null(dir)){
+	setwd(path)
+	warning("Working directory not given, setting directory to that given in'path'")
+	} else setwd(dir)
+
+	# check `path` is at least characters
 	if (!is.character(path)){
 		stop("Argument 'path' has to be a filepath", call. = FALSE)
 	}
@@ -13,8 +21,8 @@ csv_to_sqlite_path_ <- function(path, db_name = "db", single_table = FALSE, tabl
 			call. = FALSE)
 	}
 
-	for (file in list.files(path)){
-		tmp <- read.csv(paste(path, "\\", file))
+	for (file in list.files(path, pattern = ".csv")){
+		tmp <- read.csv(file)
 
 		if (single_table == FALSE){
 			RSQLite::dbWriteTable(
