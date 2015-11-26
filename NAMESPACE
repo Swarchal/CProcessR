@@ -3,3 +3,6 @@
 export(csv_to_sql)
 export(csv_to_sqlite_list_)
 export(csv_to_sqlite_path_)
+export(sql_merge_objects)
+import(RSQLite)
+import(stringr)
