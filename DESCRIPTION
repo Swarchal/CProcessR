@@ -1,7 +1,7 @@
 Package: CProcessR
 Title: Processing for CellProfiler Output
 Version: 0.0.0.9000
-Authors@R: person("Scott", "Warchal", email = "S.Warchal@sms.ed.ac.uk", role = c("aut", "cre"))
+Authors@R: as.person("Scott", "Warchal", email = "S.Warchal@sms.ed.ac.uk", role = c("aut", "cre"))
 Description: Useful for processing CellProfiler data into a manageable form..
 Depends:
     R (>= 3.2.2)
