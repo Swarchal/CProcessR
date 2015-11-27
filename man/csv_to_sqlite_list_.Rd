@@ -21,7 +21,7 @@ otherwise will produce a table per file.}
 \item{table_name}{Only useful if `single_table = TRUE`, what to call the table.}
 }
 \description{
-Called by `csv_to_sql()`, can also be used directly. If given a
+Called by `csv_to_sql`, can also be used directly. If given a
 list of .csv files, will generate an sqlite database containing either all the 
 files in a single table, or a table for each file.
 }

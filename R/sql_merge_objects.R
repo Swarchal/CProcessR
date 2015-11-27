@@ -14,8 +14,6 @@
 
 sql_merge_objects <- function(db, sep = "_"){
     
-    require(RSQLite); require(stringr) ### remove once packaged ###
-    
     # check if `db` is a valid database connection,
     # otherwise initialise a connection to `db`
     if (is.character(db)){
@@ -42,10 +40,21 @@ sql_merge_objects <- function(db, sep = "_"){
     
     if (length(objects) < 1) stop("No valid object tables detected")
     
-    # load tables containing objects for a given pipeline
+#     # load tables containing objects for a given pipeline
+#      for (pipeline in pipelines){
+#         wanted_tables <- str_match(pipeline, list_of_tables)
+#         print(wanted_tables)
+# #         load wanted tables
+# #         remove unwanted objects from wanted tables
+# #         prefix featuredata column names with object name
+# #         merge wanted tables by ImageNumber
+# #         remove duplicated metadata columns
+# #         name merged table after pipeline
+# #         remove wanted tables
+#      }
     # pre-fix columns with object name
     # merge columns for each pipeline
     # remove duplicate columns
     
-    
+    dbDisconnect(db)
 }
