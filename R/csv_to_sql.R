@@ -1,4 +1,4 @@
-#' Converts directory of .csv files to an SQLite database
+#' Converts directory or list of .csv files into an SQLite database
 #'
 #' Produces an SQLite database from either a directory or a list of .csv files
 #'

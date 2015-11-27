@@ -44,17 +44,17 @@ sql_merge_objects <- function(db, sep = "_"){
 #      for (pipeline in pipelines){
 #         wanted_tables <- str_match(pipeline, list_of_tables)
 #         print(wanted_tables)
-# #         load wanted tables
-# #         remove unwanted objects from wanted tables
-# #         prefix featuredata column names with object name
-# #         merge wanted tables by ImageNumber
-# #         remove duplicated metadata columns
-# #         name merged table after pipeline
-# #         remove wanted tables
+#         load wanted tables
+#         remove unwanted objects from wanted tables
+#         prefix featuredata column names with object name
+#         merge wanted tables by ImageNumber
+#         remove duplicated metadata columns
+#         name merged table after pipeline
+#         remove wanted tables
 #      }
-    # pre-fix columns with object name
-    # merge columns for each pipeline
-    # remove duplicate columns
+#     pre-fix columns with object name
+#     merge columns for each pipeline
+#     remove duplicate columns
     
     dbDisconnect(db)
 }

@@ -1,7 +1,7 @@
 #' Converts directory of .csv files to an SQLite database
 #'
 #' Called by `csv_to_sql`, can also be used directly. If given a
-#' list of .csv files, will generate an sqlite database containing either all the 
+#' list of .csv files, will generate an SQLite database containing either all the 
 #' files in a single table, or a table for each file.
 #'
 #' @param files list of files 
@@ -10,7 +10,7 @@
 #' @param db_name Name given to the database.
 #' @param single_table Whether to place all .csv files in a single table,
 #' 		otherwise will produce a table per file.
-#' @param table_name Only useful if `single_table = TRUE`, what to call the table.
+#' @param table_name Only relevant if `single_table = TRUE`: what to call the table.
 #' 
 #' @import RSQLite
 #' @import readr
@@ -49,19 +49,19 @@ csv_to_sqlite_list_ <- function(files, dir = NULL, db_name = "db", single_table 
         tmp <- read.csv(file)
         
         if (single_table == FALSE){
+            message(paste(" - Writing", file, "to database"))
             dbWriteTable(
                 con,
                 value = tmp,
                 name = strsplit(filen,"\\.")[[1]][1])
-            message(paste(" - Writing", file, "to database"))
             
         } else if (single_table == TRUE){
+            message(paste(" - Writing", file, "to database"))
             dbWriteTable(
                 con,
                 value = tmp,
                 name = table_name,
                 append = TRUE)
-            message(paste(" - Writing", file, "to database"))
             
         } else stop("single_table requires either TRUE or FALSE")
     }

@@ -1,7 +1,7 @@
 #' Converts directory of .csv files to an SQLite database
 #'
 #' Called by `csv_to_sql`, can also be used directly. IFf given a
-#' filepath, will generate an sqlite database containing either all the 
+#' filepath, will generate an SQLite database containing either all the 
 #' files in a single table, or a table for each file.
 #'
 #' @param path Filepath to directory containing .csv files
@@ -10,7 +10,7 @@
 #' @param db_name Name given to the database.
 #' @param single_table Whether to place all .csv files in a single table,
 #' 		otherwise will produce a table per file.
-#' @param table_name Only useful if `single_table = TRUE`, what to call the table.
+#' @param table_name Only relevant if `single_table = TRUE`: what to call the table.
 #' 
 #' @import readr
 #' @import RSQLite
@@ -48,25 +48,25 @@ csv_to_sqlite_path_ <- function(path, dir = NULL, db_name = "db", single_table =
         tmp <- read.csv(file)
         
         if (single_table == FALSE){
+            message(paste(" - Writing", file, "to database"))
             dbWriteTable(
                 con,
                 value = tmp,
                 name = strsplit(file, "\\.")[[1]][1])
-            message(paste(" - Writing", file, "to database"))
             
         } else if (single_table == TRUE){
+            message(paste(" - Writing", file, "to database"))
             dbWriteTable(
                 con,
                 value = tmp,
                 name = table_name,
                 append = TRUE)
-            message(paste(" - Writing", file, "to database"))
             
         } else stop("single_table requires either TRUE or FALSE")
     }
     
     message(paste(" - Disconnecting from", db_name))
     dbDisconnect(con) # disconnect from database
-    if (!RSQLite::dbIsValid(con)) message(" - Disconnected!")
+    if (!dbIsValid(con)) message(" - Disconnected!")
     setwd(save_wd) # restore previous wd
 }
