@@ -29,13 +29,14 @@ csv_to_sqlite_list_ <- function(files, dir = NULL, db_name = "db", single_table 
         warning("Directory not given, saving database in the working directory.")
     } else {setwd(dir)}
     
-    
     if (!is.list(files)){
         stop("Argument 'files' has to be a list.", call. = FALSE)
     }
     
     ## create connection to an SQLite database with the name `db_name`
+    message(" - Creating database:", db_name)
     con <- dbConnect(SQLite(), paste0(db_name, ".sqlite3"))
+    if(!dbIsValid(con)) stop("Failed to create database")
     
     ## warn that table_name has no effect when creating multiple tables
     if (single_table == FALSE & table_name != "exp"){
@@ -65,6 +66,8 @@ csv_to_sqlite_list_ <- function(files, dir = NULL, db_name = "db", single_table 
         } else stop("single_table requires either TRUE or FALSE")
     }
     
-    dbDisconnect(db) # disconnect from database
+    message(paste(" - Disconnecting from", db_name))
+    dbDisconnect(con) # disconnect from database
+    if (!dbIsValid(con)) message(" - Disconnected!")
     setwd(save_wd) # restore previous wd
 }

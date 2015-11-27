@@ -24,7 +24,7 @@ csv_to_sqlite_path_ <- function(path, dir = NULL, db_name = "db", single_table =
     save_wd <- getwd() # record current wd before function call
     if (is.null(dir)){
         setwd(path)
-        warning("Directory not given, saving database to 'path'")
+        warning(paste("Directory not given, saving database to:", path))
     } else setwd(dir)
     
     # check `path` is at least characters
@@ -33,7 +33,9 @@ csv_to_sqlite_path_ <- function(path, dir = NULL, db_name = "db", single_table =
     }
     
     # create connection to an SQLite database with the name `db_name`
+    message(" - Creating database:", db_name)
     con <- dbConnect(SQLite(), paste0(db_name, ".sqlite3"))
+    if(!dbIsValid(con)) stop("Failed to create database")
     
     # warn that table_name has no effect when creating multiple tables
     if (!single_table & table_name != "exp"){
@@ -63,8 +65,8 @@ csv_to_sqlite_path_ <- function(path, dir = NULL, db_name = "db", single_table =
         } else stop("single_table requires either TRUE or FALSE")
     }
     
-    message(" - Disconnecting from", db_name)
-    dbDisconnect(db) # disconnect from database
-    if (!RSQLite::dbIsValid(db)) message(" - Disconnected!")
+    message(paste(" - Disconnecting from", db_name))
+    dbDisconnect(con) # disconnect from database
+    if (!RSQLite::dbIsValid(con)) message(" - Disconnected!")
     setwd(save_wd) # restore previous wd
 }
