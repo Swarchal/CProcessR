@@ -1,3 +1,5 @@
+[![https://travis-ci.org/Swarchal/CProcessR.svg?branch=master]](https://travis-ci.org/Swarchal/CProcessR)
+
 CProcessR
 ============
 

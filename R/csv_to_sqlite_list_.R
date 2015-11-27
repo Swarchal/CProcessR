@@ -13,7 +13,6 @@
 #' @param table_name Only relevant if `single_table = TRUE`: what to call the table.
 #' 
 #' @import RSQLite
-#' @import readr
 #'
 #' @export
 

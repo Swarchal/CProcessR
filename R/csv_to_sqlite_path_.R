@@ -12,7 +12,6 @@
 #' 		otherwise will produce a table per file.
 #' @param table_name Only relevant if `single_table = TRUE`: what to call the table.
 #' 
-#' @import readr
 #' @import RSQLite
 #'
 #' @export
