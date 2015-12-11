@@ -3,7 +3,7 @@
 CProcessR
 ============
 
-Note: am biologist, no idea what I'm doing.
+:warning: am biologist, no idea what I'm doing.
 
 Package for the semi-automated processing of CellProfiler data in R. Aim to to get raw CellProfiler output into a simple useable dataframe. No effort should be made to write code for analysis or visualisation of the data - this is just for processing!
 
