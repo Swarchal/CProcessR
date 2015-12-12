@@ -1,5 +1,7 @@
-[![build status](https://travis-ci.org/Swarchal/CProcessR.svg?branch=master)](https://travis-ci.org/Swarchal/CProcessR)
 [![forthebadge](http://forthebadge.com/images/badges/made-with-crayons.svg)](http://forthebadge.com)
+
+[![build status](https://travis-ci.org/Swarchal/CProcessR.svg?branch=master)](https://travis-ci.org/Swarchal/CProcessR)
+
 
 CProcessR
 ============
