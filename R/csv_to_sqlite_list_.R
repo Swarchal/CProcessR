@@ -13,6 +13,7 @@
 #' @param table_name Only relevant if `single_table = TRUE`: what to call the table.
 #' 
 #' @import RSQLite
+#' @importFrom data.table fread
 #'
 #' @export
 
@@ -45,7 +46,7 @@ csv_to_sqlite_list_ <- function(files, dir = NULL, db_name = "db", single_table 
     
     for (file in files){
         message(paste(" - Reading file:", file))
-        tmp <- read.csv(file)
+        tmp <- fread(file, showProgress = FALSE)
        
 	# connect to database
 	dbConnect(con)
