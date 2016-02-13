@@ -9,7 +9,7 @@ sql_merge_objects(db, metrics = NULL, sep = "_")
 \arguments{
 \item{db}{database connection}
 
-\item{metrics}{helper file detailing pipelines and objects}
+\item{metrics}{helper filepath to file detailing pipelines and objects}
 
 \item{sep}{separator to separate pipeline and object in the filename
 only used if a metric file is not supplied}
