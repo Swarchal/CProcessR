@@ -46,7 +46,7 @@ csv_to_sqlite_list_ <- function(files, dir = NULL, db_name = "db", single_table 
     
     for (file in files){
         message(paste(" - Reading file:", file))
-        tmp <- fread(file, showProgress = FALSE)
+        tmp <- fread(file, showProgress = FALSE, data.table = FALSE)
        
 	# connect to database
 	dbConnect(con)
