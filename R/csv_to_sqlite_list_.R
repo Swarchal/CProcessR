@@ -46,7 +46,10 @@ csv_to_sqlite_list_ <- function(files, dir = NULL, db_name = "db", single_table 
     for (file in files){
         message(paste(" - Reading file:", file))
         tmp <- read.csv(file)
-        
+       
+	# connect to database
+	dbConnect(con)
+
         if (single_table == FALSE){
             message(paste(" - Writing", file, "to database"))
             dbWriteTable(
@@ -63,10 +66,12 @@ csv_to_sqlite_list_ <- function(files, dir = NULL, db_name = "db", single_table 
                 append = TRUE)
             
         } else stop("single_table requires either TRUE or FALSE")
+
+	# disconnect so files are written to database
+	dbDisconnect(con)
     }
     
     message(paste(" - Disconnecting from", db_name))
-    dbDisconnect(con) # disconnect from database
     if (!dbIsValid(con)) message(" - Disconnected!")
     setwd(save_wd) # restore previous wd
 }
