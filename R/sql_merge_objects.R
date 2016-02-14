@@ -28,7 +28,7 @@ metadata_cols <- function(table, value = TRUE){
 #' @export
 
 featuredata_cols <- function(table, value = TRUE){
-    setdiff(colnames(table), grep("Metadata_", colnames(x)))
+    setdiff(colnames(table), grep("Metadata_", colnames(table)))
 }
 
 
