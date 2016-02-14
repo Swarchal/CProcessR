@@ -11,7 +11,7 @@
 #' @param single_table Whether to place all .csv files in a single table,
 #' 		otherwise will produce a table per file.
 #' @param table_name Only relevant if `single_table = TRUE`: what to call the table.
-#' 
+#'
 #' @import RSQLite
 #' @importFrom data.table fread
 #'
@@ -49,7 +49,7 @@ csv_to_sqlite_list_ <- function(files, dir = NULL, db_name = "db", single_table 
         tmp <- fread(file, showProgress = FALSE, data.table = FALSE)
        
 	# connect to database
-	dbConnect(con)
+	con <- dbConnect(SQLite(), db_name, paste0(db_name, '.sqlite3'))
 
         if (single_table == FALSE){
             message(paste(" - Writing", file, "to database"))

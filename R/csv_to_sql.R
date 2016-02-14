@@ -13,17 +13,9 @@
 #' @export
 
 
-csv_to_sql <- function(x, dir = NULL, db_name = "db", single_table = FALSE, table_name = "exp"){
+csv_to_sql <- function(x, ...){
 
-	if (is.list(x)) csv_to_sqlite_list_(x,
-		dir,
-		db_name,
-		single_table,
-		table_name)
+	if (is.list(x)) csv_to_sqlite_list_(x, ...)
 
-	if (is.character(x)) csv_to_sqlite_path_(x,
-		dir,
-		db_name,
-		single_table,
-		table_name)
+	if (is.character(x)) csv_to_sqlite_path_(x, ...)
 }
