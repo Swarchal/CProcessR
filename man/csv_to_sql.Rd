@@ -4,21 +4,12 @@
 \alias{csv_to_sql}
 \title{Converts directory or list of .csv files into an SQLite database}
 \usage{
-csv_to_sql(x, dir = NULL, db_name = "db", single_table = FALSE,
-  table_name = "exp")
+csv_to_sql(x, ...)
 }
 \arguments{
 \item{x}{list of files or directory containing files}
 
-\item{dir}{Directory to save database in, otherwise will save in the
-current working directory.}
-
-\item{db_name}{Name given to the database.}
-
-\item{single_table}{Whether to place all .csv files in a single table,
-otherwise will produce a table per file.}
-
-\item{table_name}{Only useful if `single_table = TRUE`, what to call the table.}
+\item{...}{additional arguments to be passed to \code{csv_to_sqlite_x}}
 }
 \description{
 Produces an SQLite database from either a directory or a list of .csv files
